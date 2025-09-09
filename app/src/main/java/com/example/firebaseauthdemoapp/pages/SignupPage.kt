@@ -2,6 +2,7 @@ package com.example.firebaseauthdemoapp.pages
 
 
 
+import android.content.pm.ActivityInfo
 import android.widget.Toast
 
 import androidx.compose.foundation.layout.Arrangement
@@ -47,13 +48,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 import com.example.firebaseauthdemoapp.AuthState
 
 import com.example.firebaseauthdemoapp.AuthViewModel
+import com.example.firebaseauthdemoapp.LockScreenOrientation
 
 
+@Composable
+fun SignupScreen(navController: NavHostController) {
+    // Force landscape here too
+    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("Signup Page")
+        Button(onClick = { navController.popBackStack() }) {
+            Text("Back to Login")
+        }
+    }
+}
 @Composable
 
 fun SignupPage(modifier: Modifier = Modifier,navController: NavController, authViewModel: AuthViewModel){

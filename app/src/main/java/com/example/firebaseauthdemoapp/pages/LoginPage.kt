@@ -1,5 +1,6 @@
 package com.example.firebaseauthdemoapp.pages
 import android.R.attr.onClick
+import android.content.pm.ActivityInfo
 
 import android.widget.Toast
 
@@ -47,10 +48,30 @@ import androidx.compose.ui.unit.sp
 import androidx.core.app.NotificationCompat
 
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 
 import com.example.firebaseauthdemoapp.AuthState
 
 import com.example.firebaseauthdemoapp.AuthViewModel
+import com.example.firebaseauthdemoapp.LockScreenOrientation
+
+
+@Composable
+fun LoginScreen(navController: NavHostController) {
+    // Force landscape here
+    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("Login Page")
+        Button(onClick = { navController.navigate("signup") }) {
+            Text("Go to Signup")
+        }
+    }
+}
 @Composable
 fun LoginPage(modifier: Modifier = Modifier,navController: NavController, authViewModel: AuthViewModel){
     var email by remember {
@@ -154,7 +175,7 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController, authVi
 
         }) {
 
-            Text(text = "Don't have an account, Signup")
+            Text(text = "Forgot Password, Signup")
 
         }
 
