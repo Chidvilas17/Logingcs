@@ -6,14 +6,12 @@ import android.content.pm.ActivityInfo
 import android.widget.Toast
 
 import androidx.compose.foundation.layout.Arrangement
-
 import androidx.compose.foundation.layout.Column
-
 import androidx.compose.foundation.layout.Spacer
-
 import androidx.compose.foundation.layout.fillMaxSize
-
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 import androidx.compose.material3.Button
 
@@ -110,12 +108,17 @@ fun SignupPage(modifier: Modifier = Modifier,navController: NavController, authV
 
 
 
+    val scrollState = rememberScrollState()
+
+
+
     Column(
 
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState),
 
         verticalArrangement = Arrangement.Center,
-
         horizontalAlignment = Alignment.CenterHorizontally
 
     ){
