@@ -1,79 +1,31 @@
 package com.example.firebaseauthdemoapp.pages
-import android.R.attr.onClick
-import android.content.pm.ActivityInfo
-
 import android.widget.Toast
-
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.layout.Arrangement
-
-import androidx.compose.foundation.layout.Column
-
-import androidx.compose.foundation.layout.Spacer
-
-import androidx.compose.foundation.layout.fillMaxSize
-
-import androidx.compose.foundation.layout.height
-
 import androidx.compose.material3.Button
-
 import androidx.compose.material3.OutlinedTextField
-
 import androidx.compose.material3.Text
-
 import androidx.compose.material3.TextButton
-
 import androidx.compose.runtime.Composable
-
 import androidx.compose.runtime.LaunchedEffect
-
 import androidx.compose.runtime.getValue
-
 import androidx.compose.runtime.livedata.observeAsState
-
 import androidx.compose.runtime.mutableStateOf
-
 import androidx.compose.runtime.remember
-
 import androidx.compose.runtime.setValue
-
 import androidx.compose.ui.Alignment
-
 import androidx.compose.ui.Modifier
-
 import androidx.compose.ui.platform.LocalContext
-
 import androidx.compose.ui.unit.dp
-
 import androidx.compose.ui.unit.sp
-import androidx.core.app.NotificationCompat
-
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-
 import com.example.firebaseauthdemoapp.AuthState
-
 import com.example.firebaseauthdemoapp.AuthViewModel
-import com.example.firebaseauthdemoapp.LockScreenOrientation
-
-
-@Composable
-fun LoginScreen(navController: NavHostController) {
-    // Force landscape here
-    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text("Login Page")
-        Button(onClick = { navController.navigate("signup") }) {
-            Text("Go to Signup")
-        }
-    }
-}
 @Composable
 fun LoginPage(modifier: Modifier = Modifier,navController: NavController, authViewModel: AuthViewModel){
     var email by remember {
