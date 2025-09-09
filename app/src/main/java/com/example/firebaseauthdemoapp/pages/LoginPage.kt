@@ -4,6 +4,8 @@ import android.content.pm.ActivityInfo
 
 import android.widget.Toast
 
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Arrangement
 
 import androidx.compose.foundation.layout.Column
@@ -92,7 +94,7 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController, authVi
 
     }
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()),
 
         verticalArrangement = Arrangement.Center,
 
