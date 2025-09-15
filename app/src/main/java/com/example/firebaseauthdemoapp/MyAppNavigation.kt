@@ -1,26 +1,29 @@
 package com.example.firebaseauthdemoapp
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+
 import androidx.compose.ui.Modifier
+
 import androidx.navigation.compose.NavHost
+
 import androidx.navigation.compose.composable
+
 import androidx.navigation.compose.rememberNavController
+
 import com.example.firebaseauthdemoapp.pages.HomePage
+
 import com.example.firebaseauthdemoapp.pages.LoginPage
+
 import com.example.firebaseauthdemoapp.pages.SignupPage
 
 @Composable
-fun MyAppNavigtion(modifier: Modifier = Modifier, authViewModel: AuthViewModel, mainViewModel: MainViewModel){
+fun MyAppNavigtion(modifier: Modifier = Modifier, authViewModel: AuthViewModel){
     val navController = rememberNavController()
-    val isGuest by mainViewModel.isGuest.collectAsState()
 
-    val startDestination = if (isGuest) "home" else "login"
 
-    NavHost(navController = navController, startDestination = startDestination) {
+    NavHost(navController = navController, startDestination = "login", builder = {
         composable(route = "login") {
-            LoginPage(modifier, navController, authViewModel, mainViewModel)
+            LoginPage(modifier, navController,authViewModel)
         }
 
         composable(route = "signup") {

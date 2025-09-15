@@ -23,15 +23,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         val authViewModel: AuthViewModel by viewModels()
-        val mainViewModel: MainViewModel by viewModels()
 
         setContent {
             FirebaseAuthDemoAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyAppNavigtion(
                         modifier = Modifier.padding(innerPadding),
-                        authViewModel = authViewModel,
-                        mainViewModel = mainViewModel
+                        authViewModel = authViewModel
                     )
                 }
             }
