@@ -133,6 +133,14 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController, authVi
 
         }
 
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(onClick = {
+            navController.navigate(route = "home")
+        }) {
+            Text(text = "Login as Guest")
+        }
+
 
 
     }
