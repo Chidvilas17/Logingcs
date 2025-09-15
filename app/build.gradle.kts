@@ -107,6 +107,8 @@ dependencies {
     implementation(libs.firebase.auth)
 
     implementation(libs.androidx.runtime.livedata)
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
 
     testImplementation(libs.junit)
 
