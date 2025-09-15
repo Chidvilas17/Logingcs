@@ -1,5 +1,4 @@
 package com.example.firebaseauthdemoapp.pages
-
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,15 +26,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.firebaseauthdemoapp.AuthState
 import com.example.firebaseauthdemoapp.AuthViewModel
-import com.example.firebaseauthdemoapp.MainViewModel
-
 @Composable
-fun LoginPage(
-    modifier: Modifier = Modifier,
-    navController: NavController,
-    authViewModel: AuthViewModel,
-    mainViewModel: MainViewModel
-) {
+fun LoginPage(modifier: Modifier = Modifier,navController: NavController, authViewModel: AuthViewModel){
     var email by remember {
         mutableStateOf(value = "")
     }
@@ -47,60 +39,113 @@ fun LoginPage(
     LaunchedEffect(authState.value) {
         when (authState.value) {
             is AuthState.Authenticated -> navController.navigate(route = "home")
-            is AuthState.Error -> Toast.makeText(
-                context,
-                (authState.value as AuthState.Error).message,
-                Toast.LENGTH_SHORT
-            ).show()
+            is AuthState.Error -> Toast.makeText(context, (authState.value as AuthState.Error).message, Toast.LENGTH_SHORT).show()
             else -> Unit
+
         }
+
     }
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+
         verticalArrangement = Arrangement.Center,
+
         horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+
+    ){
+
         Text(text = "Login with pavaman", fontSize = 32.sp)
         Text(text = "Login with pavaman credentials", fontSize = 12.sp)
+
         Spacer(modifier = Modifier.height(16.dp))
+
+
+
         OutlinedTextField(
-            value = email,
+
+            value =email ,
+
             onValueChange = {
+
                 email = it
-            },
+
+            } ,
+
             label = {
+
                 Text(text = "Email")
+
             }
+
         )
+
         Spacer(modifier = Modifier.height(8.dp))
+
+
+
         OutlinedTextField(
-            value = password,
+
+            value =password ,
+
             onValueChange = {
+
                 password = it
-            },
+
+            } ,
+
             label = {
+
                 Text(text = "Password")
+
             }
+
         )
+
         Spacer(modifier = Modifier.height(16.dp))
+
+
+
         Button(onClick = {
-            authViewModel.login(email, password)
-        }) {
+
+            authViewModel.login(email,password)
+
+
+
+        }){
+
             Text(text = "Login")
+
         }
+
         Spacer(modifier = Modifier.height(8.dp))
+
+
+
         TextButton(onClick = {
+
             navController.navigate(route = "signup")
+
+
+
         }) {
+
             Text(text = "Forgot Password, Signup")
+
         }
+
         Spacer(modifier = Modifier.height(8.dp))
+
         Button(onClick = {
-            mainViewModel.setGuest(true)
+            navController.navigate(route = "home")
         }) {
             Text(text = "Login as Guest")
         }
+
+
+
     }
+
+
+
 }
+
